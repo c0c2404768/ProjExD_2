@@ -27,6 +27,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
+
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -39,7 +40,7 @@ def main():
     bb_img.set_colorkey((0, 0, 0))#黒色を透明に設定
     bb_rct = bb_img.get_rect()#爆弾Rect
     bb_rct.centerx = random.randint(0, WIDTH)#爆弾横座標
-    bb_rct.center = random.randint(0, WIDTH)#爆弾縦座標
+    bb_rct.centery = random.randint(0, WIDTH)#爆弾縦座標
     vx, vy = +5, +5#爆弾速度
     clock = pg.time.Clock()
     tmr = 0
@@ -88,6 +89,6 @@ def main():
 
 if __name__ == "__main__":
     pg.init()
-    main()
+    sys.exit()
     pg.quit()
     sys.exit()
