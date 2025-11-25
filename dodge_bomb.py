@@ -22,7 +22,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     画面内ならTrue，画面外ならFalse
     """
     yoko, tate = True, True
-    if rct.left < 0 or WIDTH <rct.right:  # 横方向のはみ出しチェック
+    if rct.left < 0 or WIDTH < rct.right:  # 横方向のはみ出しチェック
         yoko = False
     if rct.top < 0 or HEIGHT < rct.bottom:  # 縦方向のはみ出しチェック
         tate = False
@@ -33,7 +33,7 @@ def gameover(screen: pg.Surface) -> None:
     """ゲームオーバー時の処理を行う関数"""
     gg_img = pg.Surface((WIDTH, HEIGHT))  # 空のSurface
     gg_rct = gg_img.get_rect()  # ゲームオーバーRect
-    pg.draw.rect(gg_img, (0, 0, 0), pg.Rect(0,0,WIDTH, HEIGHT))  # 黒い四角形を描画
+    pg.draw.rect(gg_img, (0, 0, 0), pg.Rect(0, 0, WIDTH, HEIGHT))  # 黒い四角形を描画
     gg_img.set_alpha((200))  #透明度 の設定
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("Game Over", True, (255, 255, 255))
