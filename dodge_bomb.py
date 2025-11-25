@@ -1,7 +1,7 @@
 import os
+import pygame as pg
 import random
 import sys
-import pygame as pg
 import time
 
 
@@ -28,6 +28,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
+
 def gameover(screen: pg.Surface) -> None:
     """ゲームオーバー時の処理を行う関数"""
     gg_img = pg.Surface((WIDTH, HEIGHT))  # 空のSurface
@@ -48,6 +49,23 @@ def gameover(screen: pg.Surface) -> None:
     screen.blit(gg_img, [0, 0])
     pg.display.update()
     time.sleep(5)
+
+
+def get_kk_img() -> dict[tuple[int, int], pg.Surface]:
+    """こうかとん画像を辞書型で返す関数"""
+
+    kk_dict = {
+        (0, 0): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 0, 0),
+        (+5, 0): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 0, 1.0),
+        (+5, -5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 315, 1.0),
+        (0, -5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 270, 1.0),
+        (-5, -5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 225, 1.0),
+        #(-5, 0): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 180, 1.0),
+        (-5, +5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 135, 1.0),
+        (0, +5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 90, 1.0),
+        (+5, +5): pg.transform.rotozoom((pg.image.load("fig/3.png"), 0, 0.9), 45, 1.0),
+    }
+    return kk_dict
 
 
 def main():
